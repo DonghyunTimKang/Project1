@@ -1,0 +1,22 @@
+header, .column {
+        border: 1px solid black;
+        text-align: center;
+      }
+      .column{
+        width: 20%;
+      }
+      head {
+        flex:1 100%;
+      }
+      #PlayerBoard {
+        display: flex;
+        justify-content: center;
+
+      }
+      }
+      @media (max-width: 720px) and (min-width: 600px) {
+        header, .column {
+          width: 100%;
+
+        }
+}

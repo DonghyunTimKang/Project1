@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>review</title>
+    <style>
+      header, .column {
+        border: 1px solid black;
+        text-align: center;
+      }
+      header{
+        height: 300px;
+        background-color: black;
+      }
+      .column{
+        width: 20%;
+      }
+      head {
+        flex:1 100%;
+      }
+      #container {
+        display: flex;
+        justify-content: center;
+        height: 350px;
+      }
+      @media (max-width: 720px) and (min-width: 600px) {
+          header, .column {
+          width: 100%;
+
+          }
+      }
+      button {
+        height: 275px;
+        width: 200px;
+      }
+      rounds {
+        left: 400px;
+      }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <button id="BlackCardDeck">Black Card</button>
+    <button class="PlayerOneHand" id="PlayerOneHandC1">PlayerOneHandC1</button>
+    <button class="PlayerOneHand" id="PlayerOneHandC2">PlayerOneHandC2</button>
+    <button class="PlayerOneHand" id="PlayerOneHandC3">PlayerOneHandC3</button>
+    <button class="PlayerOneHand" id="PlayerOneHandC4">PlayerOneHandC4</button>
+    <button class="PlayerOneHand" id="PlayerOneHandC5">PlayerOneHandC5</button>
+    <button class="PlayerTwoHand" id="PlayerTwoHandC1">PlayerTwoHandC1</button>
+    <button class="PlayerTwoHand" id="PlayerTwoHandC2">PlayerTwoHandC2</button>
+    <button class="PlayerTwoHand" id="PlayerTwoHandC3">PlayerTwoHandC3</button>
+    <button class="PlayerTwoHand" id="PlayerTwoHandC4">PlayerTwoHandC4</button>
+    <button class="PlayerTwoHand" id="PlayerTwoHandC5">PlayerTwoHandC5</button>
+    <button class="PlayerThreeHand" id="PlayerThreeHandC1">PlayerThreeHandC1</button>
+    <button class="PlayerThreeHand" id="PlayerThreeHandC2">PlayerThreeHandC2</button>
+    <button class="PlayerThreeHand" id="PlayerThreeHandC3">PlayerThreeHandC3</button>
+    <button class="PlayerThreeHand" id="PlayerThreeHandC4">PlayerThreeHandC4</button>
+    <button class="PlayerThreeHand" id="PlayerThreeHandC5">PlayerThreeHandC5</button>
+    <button class="PlayerFourHand" id="PlayerFourHandC1">PlayerFourHandC1</button>
+    <button class="PlayerFourHand" id="PlayerFourHandC2">PlayerFourHandC2</button>
+    <button class="PlayerFourHand" id="PlayerFourHandC3">PlayerFourHandC3</button>
+    <button class="PlayerFourHand" id="PlayerFourHandC4">PlayerFourHandC4</button>
+    <button class="PlayerFourHand" id="PlayerFourHandC5">PlayerFourHandC5</button>
+  </header>
+<div id="container">
+  <div class = "column">
+    <button class="PlayerDeck" id="PlayerDeckOne">PlayerOne</button>
+    <button class="ChosenCard" id="ChosenCardPlayerOne">PlayerOneChosenCard</button></br>
+    <div>Rounds Won</div>
+  </div>
+
+  <div class = "column">
+    <button class="PlayerDeck" id="PlayerDeckTwo">PlayerTwo</button>
+    <button class="ChosenCard" id="ChosenCardPlayerTwo">PlayerTwoChosenCard</button></br>
+    <div>Rounds Won</div>
+  </div>
+
+  <div class = "column">
+    <button class="PlayerDeck" id="PlayerDeckThree">PlayerThree</button>
+    <button class="ChosenCard" id="ChosenCardPlayerThree">PlayerThreeChosenCard</button></br>
+    <div>Rounds Won</div>
+  </div>
+
+  <div class = "column">
+    <button class="PlayerDeck" id="PlayerDeckFour">PlayerFour</button>
+    <button class="ChosenCard" id="ChosenCardPlayerFour">PlayerFourChosenCard</button></br>
+    <div>Rounds Won</div>
+  </div>
+</div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="js/CardsAgainstHumanity.js"></script>
+</html>
