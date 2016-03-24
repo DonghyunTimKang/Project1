@@ -2,21 +2,46 @@ header, .column {
         border: 1px solid black;
         text-align: center;
       }
+      header{
+        height: 300px;
+        background-color: black;
+      }
       .column{
         width: 20%;
       }
       head {
         flex:1 100%;
       }
-      #PlayerBoard {
+      #container {
         display: flex;
         justify-content: center;
-
+        height: 350px;
       }
+      div#container{
+        background-color: black;
       }
       @media (max-width: 720px) and (min-width: 600px) {
-        header, .column {
+          header, .column {
           width: 100%;
 
-        }
-}
+          }
+      }
+      button {
+        height: 275px;
+        width: 200px;
+
+      }
+      .PlayerDeck{
+        background-image: url("whiteCardBackground.jpg");
+        background-position: center;
+      }
+      #BlackCardDeck{
+        background-image: url("blackCardBlackground.jpg");
+        background-position: center;
+        color: white;
+        font-weight: bold;
+
+      }
+      rounds {
+        left: 400px;
+      }

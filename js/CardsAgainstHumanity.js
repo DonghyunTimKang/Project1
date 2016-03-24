@@ -25,6 +25,10 @@ var chosenCardPlayerOne = document.getElementById("ChosenCardPlayerOne");
 var chosenCardPlayerTwo = document.getElementById("ChosenCardPlayerTwo");
 var chosenCardPlayerThree = document.getElementById("ChosenCardPlayerThree");
 var chosenCardPlayerFour = document.getElementById("ChosenCardPlayerFour");
+var playerOneWinDisplay = document.getElementById("PlayerOneWins");
+var playerTwoWinDisplay = document.getElementById("PlayerTwoWins");
+var playerThreeWinDisplay = document.getElementById("PlayerThreeWins");
+var playerFourWinDisplay = document.getElementById("PlayerFourWins");
 var playerOneWins = 0;
 var playerTwoWins = 0;
 var playerThreeWins = 0;
@@ -34,11 +38,11 @@ var twoWins = playerTwoWins;
 var threeWins = playerThreeWins;
 var fourWins = playerFourWins;
 //BlackCardDeck exists as an ID so be careful!!
-var roundCounter = 0;
+var roundCounter = 1;
+ var round = roundCounter;
 var discardPile = [];
 var chosenPile = [];
-var blackCardDeck = [12,54,67,90,45];
-var whiteCardDeck = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]
+
                     /*,41,42,43,44,45,46,47,48,49,50,51,52,
                     53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,
                     69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,
@@ -50,8 +54,8 @@ var whiteCardDeckPlayerFour = [];
 var turnCounter=1;
 var turn = turnCounter;
 var chosenCounter=0;
-var chosen = chosenCounter
-
+var chosen = chosenCounter;
+var blackCardButtonStopper = 1;
 /*This function will shuffle an array into random elements.
 -Example how to call
   var arr = [2, 11, 37, 42];
@@ -95,6 +99,7 @@ $(document).ready(function(number){
   console.log(whiteCardDeck);
   //Determines how many cards are in each player's white deck
   whiteCardDeckPlayerOne = whiteCardDeck.slice(0,10);
+
   console.log(whiteCardDeckPlayerOne);
   whiteCardDeckPlayerTwo = whiteCardDeck.slice(10,20);
   console.log(whiteCardDeckPlayerTwo);
@@ -102,52 +107,112 @@ $(document).ready(function(number){
   console.log(whiteCardDeckPlayerThree);
   whiteCardDeckPlayerFour = whiteCardDeck.slice(30,40);
   console.log(whiteCardDeckPlayerFour);
+  console.log("Current Round"+round)
 });
 
 //Conditional statement will be added that will
 //only be activated when choseCard array for
 //each player have a value
-  if (blackCard !== null){
-    var round = roundCounter;
+
     blackCard.addEventListener("click", function (){
-      console.log(blackCardDeck[0]);
-      discardPile.push(blackCardDeck[0]);
-      blackCardDeck.shift()
+      //The blackCardButtonStopper if statement/variable
+      //is used to keep the button from activating again
+      //until the cycle has completed
+      if (blackCardButtonStopper == 1){
+        //displays first element of the black card deck
+        blackCard.innerHTML = blackCardDeck[0];
+        console.log(blackCardDeck[0]);
+        if(round != roundCounter){
+          discardPile.push(blackCardDeck[0]);
+          blackCardDeck.shift()
+          //displays updated list after the first element was discarded
+          blackCard.innerHTML = blackCardDeck[0];
       console.log(blackCardDeck)
       console.log(discardPile)
-      round ++;
-      console.log(round);
-      console.log(whiteCardDeck);
+      console.log("Current Round"+round);
+      console.log(whiteCardDeck);}
+//This will determine which player is a judge for that round
+      if(round == 1 || round % 4 == 1){
+        alert("Player One is the judge")
+        $("#PlayerDeckOne").hide();
+        $("#ChosenCardPlayerOne").hide();
+        //if (turn == 1 || turn % 2 == 0)
+        turn++;
+      }
+      if(round == 2 || round % 4 == 2){
+        alert("Player Two is the judge")
+        $("#PlayerDeckTwo").hide();
+        $("#ChosenCardPlayerTwo").hide();
+      //  if (turn % 2 == 1)
+        //  turn++;
+      }
+      if (round == 3 || round % 4 == 3){
+        alert("Player Three is the judge")
+        $("#PlayerDeckThree").hide();
+        $("#ChosenCardPlayerThree").hide();
+     //   if (turn % 2 == 0)
+      //  turn++;
+      }
+      if (round == 4 || round % 4 == 0){
+        alert("Player Four is the judge")
+        $("#PlayerDeckFour").hide();
+        $("#ChosenCardPlayerFour").hide();
+      //  if (turn % 2 == 1)
+      //  turn++;
+      }
       if(blackCardDeck == "")
       console.log("out of cards")
-    })
+    blackCardButtonStopper++;
   }
+    })
+
 
 $("#PlayerDeckOne").click(function(){
-  if (turn == 1 || turn == 5 || turn == 9 || turn == 13){
+  if ((turn == 1 || turn == 4 * round - 3) && (round != 1 || round%4 != 1) && (blackCardButtonStopper == 2)){
   $('#BlackCardDeck').hide();
   $('.PlayerOneHand').show();
+  //First five elements of player one's deck is displayed above
+  playerOneCardOne.innerHTML = whiteCardDeckPlayerOne[0];
+  playerOneCardTwo.innerHTML = whiteCardDeckPlayerOne[1];
+  playerOneCardThree.innerHTML = whiteCardDeckPlayerOne[2];
+  playerOneCardFour.innerHTML = whiteCardDeckPlayerOne[3];
+  playerOneCardFive.innerHTML = whiteCardDeckPlayerOne[4];
     }
        });
 
 $("#PlayerDeckTwo").click(function(){
-  if (turn == 2 || turn == 6 || turn == 10 || turn == 14){
+  if ((turn == 2 || turn == 4 * round - 2) && (round != 2 || round%4 != 2) && (blackCardButtonStopper == 2)){
   $('#BlackCardDeck').hide();
   $('.PlayerTwoHand').show();
+  playerTwoCardOne.innerHTML = whiteCardDeckPlayerTwo[0]
+  playerTwoCardTwo.innerHTML = whiteCardDeckPlayerTwo[1]
+  playerTwoCardThree.innerHTML = whiteCardDeckPlayerTwo[2]
+  playerTwoCardFour.innerHTML = whiteCardDeckPlayerTwo[3]
+  playerTwoCardFive.innerHTML = whiteCardDeckPlayerTwo[4]
     }
        });
 
 $("#PlayerDeckThree").click(function(){
-  if (turn == 3 || turn == 7 || turn == 11 || turn == 15){
+  if ((turn == 3 || turn == 4 * round - 1) && (round != 3 || round%4 != 3) && (blackCardButtonStopper == 2)){
   $('#BlackCardDeck').hide();
   $('.PlayerThreeHand').show();
+  playerThreeCardOne.innerHTML = whiteCardDeckPlayerThree[0]
+  playerThreeCardTwo.innerHTML = whiteCardDeckPlayerThree[1]
+  playerThreeCardThree.innerHTML = whiteCardDeckPlayerThree[2]
+  playerThreeCardFour.innerHTML = whiteCardDeckPlayerThree[3]
+  playerThreeCardFive.innerHTML = whiteCardDeckPlayerThree[4]
     }
        });
 
 $("#PlayerDeckFour").click(function(){
-  if (turn == 4 || turn == 8 || turn == 12 || turn == 16){
+  if ((turn == 4 || turn == 4 * round) && (round != 4 || round%4 != 0) && (blackCardButtonStopper == 2)){
   $('#BlackCardDeck').hide();
   $('.PlayerFourHand').show();
+  playerFourCardOne.innerHTML = whiteCardDeckPlayerFour[0]
+  playerFourCardTwo.innerHTML = whiteCardDeckPlayerFour[1]
+  playerFourCardThree.innerHTML = whiteCardDeckPlayerFour[2]
+  playerFourCardFour.innerHTML = whiteCardDeckPlayerFour[3]
+  playerFourCardFive.innerHTML = whiteCardDeckPlayerFour[4]
    }
        });
 
@@ -155,16 +220,23 @@ $("#PlayerDeckFour").click(function(){
 //the screen will change back
 $('.PlayerOneHand').click(function(){
     turn=turn+1;
+    //If player 2 is a judge, skip turn
+    if(round == 2 || round % 4 == 2)
+      turn=turn+1;
    $('.PlayerOneHand').hide();
    $('#BlackCardDeck').show();
  });
 $('.PlayerTwoHand').click(function(){
     turn=turn+1;
+    if(round ==3 || round % 4 == 3)
+      turn=turn+1
    $('.PlayerTwoHand').hide();
    $('#BlackCardDeck').show();
  });
 $('.PlayerThreeHand').click(function(){
     turn=turn+1;
+    if(round==4 || round % 4 == 0)
+      turn=turn+1;
    $('.PlayerThreeHand').hide();
    $('#BlackCardDeck').show();
  });
@@ -259,6 +331,16 @@ $('.PlayerFourHand').click(function(){
     console.log(whiteCardDeckPlayerThree+"White Card Deck");
     console.log(chosenPile+"Chosen Pile")
     chosen = chosen + 1;
+    //If 4 is a judge player 3 will be the last one to play a card
+    //before chosen cards appear
+     if (round == 4 || round % 4 == 0){
+      $('.PlayerDeck').hide();
+      $(".ChosenCard").show();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerTwo.innerHTML = chosenPile[1];
+      chosenCardPlayerThree.innerHTML = chosenPile[2];
+      $("#ChosenCardPlayerFour").hide();
+    }
   })
   playerThreeCardTwo.addEventListener("click", function (){
     chosenPile.push(whiteCardDeckPlayerTwo[1]);
@@ -266,6 +348,16 @@ $('.PlayerFourHand').click(function(){
     console.log(whiteCardDeckPlayerThree+"White Card Deck");
     console.log(chosenPile+"Chosen Pile")
     chosen = chosen + 1;
+    //If 4 is a judge player 3 will be the last one to play a card
+    //before chosen cards appear
+     if (round == 4 || round % 4 == 0){
+      $('.PlayerDeck').hide();
+      $(".ChosenCard").show();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerTwo.innerHTML = chosenPile[1];
+      chosenCardPlayerThree.innerHTML = chosenPile[2];
+      $("#ChosenCardPlayerFour").hide();
+    }
   })
   playerThreeCardThree.addEventListener("click", function (){
     chosenPile.push(whiteCardDeckPlayerThree[2]);
@@ -273,6 +365,16 @@ $('.PlayerFourHand').click(function(){
     console.log(whiteCardDeckPlayerThree+"White Card Deck");
     console.log(chosenPile+"Chosen Pile")
     chosen = chosen + 1;
+    //If 4 is a judge player 3 will be the last one to play a card
+    //before chosen cards appear
+     if (round == 4 || round % 4 == 0){
+      $('.PlayerDeck').hide();
+      $(".ChosenCard").show();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerTwo.innerHTML = chosenPile[1];
+      chosenCardPlayerThree.innerHTML = chosenPile[2];
+      $("#ChosenCardPlayerFour").hide();
+    }
   })
   playerThreeCardFour.addEventListener("click", function (){
     chosenPile.push(whiteCardDeckPlayerThree[3]);
@@ -280,6 +382,16 @@ $('.PlayerFourHand').click(function(){
     console.log(whiteCardDeckPlayerThree+"White Card Deck");
     console.log(chosenPile+"Chosen Pile")
     chosen = chosen + 1;
+    //If 4 is a judge player 3 will be the last one to play a card
+    //before chosen cards appear
+     if (round == 4 || round % 4 == 0){
+      $('.PlayerDeck').hide();
+      $(".ChosenCard").show();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerTwo.innerHTML = chosenPile[1];
+      chosenCardPlayerThree.innerHTML = chosenPile[2];
+      $("#ChosenCardPlayerFour").hide();
+    }
   })
   playerThreeCardFive.addEventListener("click", function (){
     chosenPile.push(whiteCardDeckPlayerThree[4]);
@@ -287,6 +399,16 @@ $('.PlayerFourHand').click(function(){
     console.log(whiteCardDeckPlayerThree+"White Card Deck");
     console.log(chosenPile+"Chosen Pile")
     chosen = chosen + 1;
+    //If 4 is a judge player 3 will be the last one to play a card
+    //before chosen cards appear
+     if (round == 4 || round % 4 == 0){
+      $('.PlayerDeck').hide();
+      $('.ChosenCard').show();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerTwo.innerHTML = chosenPile[1];
+      chosenCardPlayerThree.innerHTML = chosenPile[2];
+      $("#ChosenCardPlayerFour").hide();
+    }
   })
 /*Player Four will receive whiteCardDeck index [60-79]*/
   playerFourCardOne.addEventListener("click", function (){
@@ -298,9 +420,30 @@ $('.PlayerFourHand').click(function(){
     chosen = chosen + 1;
     $('.PlayerDeck').hide();
     $('.ChosenCard').show();
+    if (round == 1 || round % 4 == 1){
+      $("#ChosenCardPlayerOne").hide();
+      chosenCardPlayerTwo.innerHTML = chosenPile[0];
+      chosenCardPlayerThree.innerHTML =  chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+    if (round == 2 || round % 4 == 2){
+      $("#ChosenCardPlayerTwo").hide();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerThree.innerHTML = chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+    if (round == 3 || round % 4 == 3){
+      $("#ChosenCardPlayerThree").hide();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerTwo.innerHTML = chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+    if (round == 4 || round % 4 == 0){
+      $("#ChosenCardPlayerFour").hide();
+    }
   })
   playerFourCardTwo.addEventListener("click", function (){
- chosenPile.push(whiteCardDeckPlayerFour[1]);
+    chosenPile.push(whiteCardDeckPlayerFour[1]);
     whiteCardDeckPlayerFour.splice(1,1);
     console.log(whiteCardDeckPlayerFour+"White Card Deck");
     console.log(chosenPile+"Chosen Pile")
@@ -308,9 +451,30 @@ $('.PlayerFourHand').click(function(){
     chosen = chosen + 1;
     $('.PlayerDeck').hide();
     $('.ChosenCard').show();
+    if (round == 1 || round % 4 == 1){
+      $("#ChosenCardPlayerOne").hide();
+      chosenCardPlayerTwo.innerHTML = chosenPile[0];
+      chosenCardPlayerThree.innerHTML =  chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+    if (round == 2 || round % 4 == 2){
+      $("#ChosenCardPlayerTwo").hide();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerThree.innerHTML = chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+    if (round == 3 || round % 4 == 3){
+      $("#ChosenCardPlayerThree").hide();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerTwo.innerHTML = chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+     if (round == 4 || round % 4 == 0){
+      $("#ChosenCardPlayerFour").hide();
+    }
   })
   playerFourCardThree.addEventListener("click", function (){
- chosenPile.push(whiteCardDeckPlayerFour[2]);
+    chosenPile.push(whiteCardDeckPlayerFour[2]);
     whiteCardDeckPlayerFour.splice(2,1);
     console.log(whiteCardDeckPlayerFour+"White Card Deck");
     console.log(chosenPile+"Chosen Pile")
@@ -318,9 +482,30 @@ $('.PlayerFourHand').click(function(){
     chosen = chosen + 1;
     $('.PlayerDeck').hide();
     $('.ChosenCard').show();
+    if (round == 1 || round % 4 == 1){
+      $("#ChosenCardPlayerOne").hide();
+      chosenCardPlayerTwo.innerHTML = chosenPile[0];
+      chosenCardPlayerThree.innerHTML =  chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+    if (round == 2 || round % 4 == 2){
+      $("#ChosenCardPlayerTwo").hide();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerThree.innerHTML = chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+    if (round == 3 || round % 4 == 3){
+      $("#ChosenCardPlayerThree").hide();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerTwo.innerHTML = chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+     if (round == 4 || round % 4 == 0){
+      $("#ChosenCardPlayerFour").hide();
+    }
   })
   playerFourCardFour.addEventListener("click", function (){
- chosenPile.push(whiteCardDeckPlayerFour[3]);
+    chosenPile.push(whiteCardDeckPlayerFour[3]);
     whiteCardDeckPlayerFour.splice(3,1);
     console.log(whiteCardDeckPlayerFour+"White Card Deck");
     console.log(chosenPile+"Chosen Pile")
@@ -328,9 +513,31 @@ $('.PlayerFourHand').click(function(){
     chosen = chosen + 1;
     $('.PlayerDeck').hide();
     $('.ChosenCard').show();
+
+    if (round == 1 || round % 4 == 1){
+      $("#ChosenCardPlayerOne").hide();
+      chosenCardPlayerTwo.innerHTML = chosenPile[0];
+      chosenCardPlayerThree.innerHTML =  chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+    if (round == 2 || round % 4 == 2){
+      $("#ChosenCardPlayerTwo").hide();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerThree.innerHTML = chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+    if (round == 3 || round % 4 == 3){
+      $("#ChosenCardPlayerThree").hide();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerTwo.innerHTML = chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+     if (round == 4 || round % 4 == 0){
+      $("#ChosenCardPlayerFour").hide();
+    }
   })
   playerFourCardFive.addEventListener("click", function (){
- chosenPile.push(whiteCardDeckPlayerFour[4]);
+    chosenPile.push(whiteCardDeckPlayerFour[4]);
     whiteCardDeckPlayerFour.splice(4,1);
     console.log(whiteCardDeckPlayerFour+"White Card Deck");
     console.log(chosenPile+"Chosen Pile")
@@ -338,37 +545,86 @@ $('.PlayerFourHand').click(function(){
     chosen = chosen + 1;
     $('.PlayerDeck').hide();
     $('.ChosenCard').show();
+    if (round == 1 || round % 4 == 1){
+      $("#ChosenCardPlayerOne").hide();
+      chosenCardPlayerTwo.innerHTML = chosenPile[0];
+      chosenCardPlayerThree.innerHTML =  chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+    if (round == 2 || round % 4 == 2){
+      $("#ChosenCardPlayerTwo").hide();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerThree.innerHTML = chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+    if (round == 3 || round % 4 == 3){
+      $("#ChosenCardPlayerThree").hide();
+      chosenCardPlayerOne.innerHTML = chosenPile[0];
+      chosenCardPlayerTwo.innerHTML = chosenPile[1];
+      chosenCardPlayerFour.innerHTML = chosenPile[2];
+    }
+     if (round == 4 || round % 4 == 0){
+      $("#ChosenCardPlayerFour").hide();
+    }
   })
 
 chosenCardPlayerOne.addEventListener("click", function(){
     oneWins = oneWins + 1;
-    console.log(oneWins);
+    console.log("Player One Won"+oneWins);
     $('.ChosenCard').hide();
     $('.PlayerDeck').show();
     chosenPile.splice(0,chosenPile.length);
+    if (oneWins != playerOneWins){
+      console.log("CHange in variable works")
+      round++;
+      console.log(round);
+      playerOneWinDisplay.innerHTML = "Player One Wins " + oneWins;
+      blackCardButtonStopper = 1;
+    }
   })
 
 chosenCardPlayerTwo.addEventListener("click", function(){
     twoWins = twoWins + 1;
-    console.log(twoWins);
+    console.log("Player Two Won"+twoWins);
     $('.ChosenCard').hide();
     $('.PlayerDeck').show();
     chosenPile.splice(0,chosenPile.length);
+     if (twoWins != playerTwoWins){
+      console.log("CHange in variable works")
+      round++;
+      console.log(round);
+      playerTwoWinDisplay.innerHTML = "Player Two Wins " + twoWins;
+      blackCardButtonStopper = 1;
+    }
   })
 
 chosenCardPlayerThree.addEventListener("click", function(){
     threeWins = threeWins + 1;
-    console.log(threeWins);
+    console.log("Player Three Won"+threeWins);
     $('.ChosenCard').hide();
     $('.PlayerDeck').show();
     chosenPile.splice(0,chosenPile.length);
+     if (threeWins != playerThreeWins){
+      console.log("CHange in variable works")
+      round++;
+      console.log(round);
+      playerThreeWinDisplay.innerHTML = "Player Three Wins " + threeWins;
+      blackCardButtonStopper = 1;
+    }
   })
 
 chosenCardPlayerFour.addEventListener("click", function(){
     fourWins = fourWins + 1;
-    console.log(fourWins);
+    console.log("Player Four Won"+fourWins);
     $('.ChosenCard').hide();
     $('.PlayerDeck').show();
     chosenPile.splice(0,chosenPile.length);
+     if (fourWins != playerFourWins){
+      console.log("CHange in variable works")
+      round++;
+      console.log(round);
+      playerFourWinDisplay.innerHTML = "Player Four Wins " + fourWins;
+      blackCardButtonStopper = 1;
+      console.log("black card blackCardButtonStopper="+blackCardButtonStopper);
+    }
   })
-

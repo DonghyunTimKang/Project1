@@ -2,47 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>review</title>
-    <style>
-      header, .column {
-        border: 1px solid black;
-        text-align: center;
-      }
-      header{
-        height: 300px;
-        background-color: black;
-      }
-      .column{
-        width: 20%;
-      }
-      head {
-        flex:1 100%;
-      }
-      #container {
-        display: flex;
-        justify-content: center;
-        height: 350px;
-      }
-      @media (max-width: 720px) and (min-width: 600px) {
-          header, .column {
-          width: 100%;
-
-          }
-      }
-      button {
-        height: 275px;
-        width: 200px;
-      }
-      rounds {
-        left: 400px;
-      }
-  </style>
-
+    <title>Cards Against Humanity</title>
+  <link rel="stylesheet" type="text/css" href="css/CardsAgainstHumanity.css">
 </head>
 
 <body>
   <header>
-    <button id="BlackCardDeck">Black Card</button>
+    <button id="BlackCardDeck">Start</button>
     <button class="PlayerOneHand" id="PlayerOneHandC1">PlayerOneHandC1</button>
     <button class="PlayerOneHand" id="PlayerOneHandC2">PlayerOneHandC2</button>
     <button class="PlayerOneHand" id="PlayerOneHandC3">PlayerOneHandC3</button>
@@ -68,29 +34,30 @@
   <div class = "column">
     <button class="PlayerDeck" id="PlayerDeckOne">PlayerOne</button>
     <button class="ChosenCard" id="ChosenCardPlayerOne">PlayerOneChosenCard</button></br>
-    <div>Rounds Won</div>
+    <div id="PlayerOneWins">Player One Wins</div>
   </div>
 
   <div class = "column">
     <button class="PlayerDeck" id="PlayerDeckTwo">PlayerTwo</button>
     <button class="ChosenCard" id="ChosenCardPlayerTwo">PlayerTwoChosenCard</button></br>
-    <div>Rounds Won</div>
+    <div id="PlayerTwoWins" >Player Two Wins</div>
   </div>
 
   <div class = "column">
     <button class="PlayerDeck" id="PlayerDeckThree">PlayerThree</button>
     <button class="ChosenCard" id="ChosenCardPlayerThree">PlayerThreeChosenCard</button></br>
-    <div>Rounds Won</div>
+    <div id="PlayerThreeWins">Player Three Wins</div>
   </div>
 
   <div class = "column">
     <button class="PlayerDeck" id="PlayerDeckFour">PlayerFour</button>
     <button class="ChosenCard" id="ChosenCardPlayerFour">PlayerFourChosenCard</button></br>
-    <div>Rounds Won</div>
+    <div id="PlayerFourWins">Player Four Wins</div>
   </div>
 </div>
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="js/CardsAgainstHumanityDeck.js"></script>
 <script src="js/CardsAgainstHumanity.js"></script>
 </html>
