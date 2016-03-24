@@ -37,16 +37,10 @@ var oneWins = playerOneWins;
 var twoWins = playerTwoWins;
 var threeWins = playerThreeWins;
 var fourWins = playerFourWins;
-//BlackCardDeck exists as an ID so be careful!!
 var roundCounter = 1;
- var round = roundCounter;
+var round = roundCounter;
 var discardPile = [];
 var chosenPile = [];
-
-                    /*,41,42,43,44,45,46,47,48,49,50,51,52,
-                    53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,
-                    69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,
-                    85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100*/
 var whiteCardDeckPlayerOne = [];
 var whiteCardDeckPlayerTwo = [];
 var whiteCardDeckPlayerThree = [];
@@ -56,12 +50,8 @@ var turn = turnCounter;
 var chosenCounter=0;
 var chosen = chosenCounter;
 var blackCardButtonStopper = 1;
-/*This function will shuffle an array into random elements.
--Example how to call
-  var arr = [2, 11, 37, 42];
-  shuffle(arr);
-  console.log(arr);*/
-//Fisher-Yates shuffle
+
+
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -81,10 +71,13 @@ function shuffle(array) {
   return array;
 }
 
-
-//Lines 3-16 will prep the board for 4 players.
+//Lines 77-100 will prep the board for 4 players.
 //Shuffling and dealing
 $(document).ready(function(number){
+  //78-80 are a test for a title
+  /*$('#BlackCardDeck').hide();
+  $('.PlayerDeck').hide();
+  $('.PlayerWins').hide();*/
   $('.PlayerOneHand').hide();
   $('.PlayerTwoHand').hide();
   $('.PlayerThreeHand').hide();
@@ -99,7 +92,6 @@ $(document).ready(function(number){
   console.log(whiteCardDeck);
   //Determines how many cards are in each player's white deck
   whiteCardDeckPlayerOne = whiteCardDeck.slice(0,10);
-
   console.log(whiteCardDeckPlayerOne);
   whiteCardDeckPlayerTwo = whiteCardDeck.slice(10,20);
   console.log(whiteCardDeckPlayerTwo);
@@ -135,30 +127,27 @@ $(document).ready(function(number){
       if(round == 1 || round % 4 == 1){
         alert("Player One is the judge")
         $("#PlayerDeckOne").hide();
+        $("#PlayerOneWins").hide();
         $("#ChosenCardPlayerOne").hide();
-        //if (turn == 1 || turn % 2 == 0)
         turn++;
       }
       if(round == 2 || round % 4 == 2){
         alert("Player Two is the judge")
         $("#PlayerDeckTwo").hide();
+        $("#PlayerTwoWins").hide();
         $("#ChosenCardPlayerTwo").hide();
-      //  if (turn % 2 == 1)
-        //  turn++;
       }
       if (round == 3 || round % 4 == 3){
         alert("Player Three is the judge")
         $("#PlayerDeckThree").hide();
+        $("#PlayerThreeWins").hide();
         $("#ChosenCardPlayerThree").hide();
-     //   if (turn % 2 == 0)
-      //  turn++;
       }
       if (round == 4 || round % 4 == 0){
         alert("Player Four is the judge")
         $("#PlayerDeckFour").hide();
+        $("#PlayerFourWins").hide();
         $("#ChosenCardPlayerFour").hide();
-      //  if (turn % 2 == 1)
-      //  turn++;
       }
       if(blackCardDeck == "")
       console.log("out of cards")
@@ -573,6 +562,7 @@ chosenCardPlayerOne.addEventListener("click", function(){
     console.log("Player One Won"+oneWins);
     $('.ChosenCard').hide();
     $('.PlayerDeck').show();
+    $('.PlayerWins').show();
     chosenPile.splice(0,chosenPile.length);
     if (oneWins != playerOneWins){
       console.log("CHange in variable works")
@@ -588,6 +578,7 @@ chosenCardPlayerTwo.addEventListener("click", function(){
     console.log("Player Two Won"+twoWins);
     $('.ChosenCard').hide();
     $('.PlayerDeck').show();
+    $('.PlayerWins').show();
     chosenPile.splice(0,chosenPile.length);
      if (twoWins != playerTwoWins){
       console.log("CHange in variable works")
@@ -603,6 +594,7 @@ chosenCardPlayerThree.addEventListener("click", function(){
     console.log("Player Three Won"+threeWins);
     $('.ChosenCard').hide();
     $('.PlayerDeck').show();
+    $('.PlayerWins').show();
     chosenPile.splice(0,chosenPile.length);
      if (threeWins != playerThreeWins){
       console.log("CHange in variable works")
@@ -618,6 +610,7 @@ chosenCardPlayerFour.addEventListener("click", function(){
     console.log("Player Four Won"+fourWins);
     $('.ChosenCard').hide();
     $('.PlayerDeck').show();
+    $('.PlayerWins').show();
     chosenPile.splice(0,chosenPile.length);
      if (fourWins != playerFourWins){
       console.log("CHange in variable works")
