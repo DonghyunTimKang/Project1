@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Cards Against Humanity</title>
-  <link rel="stylesheet" type="text/css" href="css/CardsAgainstHumanity.css">
+    <link rel="stylesheet" type="text/css" href="css/CardsAgainstHumanity.css">
 </head>
 
 <body>
   <header>
+    <!--<form id="my-form">
+      <input type="text" id="RoundInput" style="width: 80px; height: 40px;" />
+      <button type="submit">PLAY</button>
+    </form>-->
+    <input id="RoundInput" style="width: 80px; height: 40px;" type="text">
     <button id="BlackCardDeck">Start</button>
     <button class="PlayerOneHand" id="PlayerOneHandC1">PlayerOneHandC1</button>
     <button class="PlayerOneHand" id="PlayerOneHandC2">PlayerOneHandC2</button>
@@ -34,25 +39,25 @@
   <div class = "column">
     <button class="PlayerDeck" id="PlayerDeckOne">PlayerOne</button>
     <button class="ChosenCard" id="ChosenCardPlayerOne">PlayerOneChosenCard</button></br>
-    <div id="PlayerOneWins">Player One Wins</div>
+    <div class="PlayerWins" id="PlayerOneWins">Player One Wins</div>
   </div>
 
   <div class = "column">
     <button class="PlayerDeck" id="PlayerDeckTwo">PlayerTwo</button>
     <button class="ChosenCard" id="ChosenCardPlayerTwo">PlayerTwoChosenCard</button></br>
-    <div id="PlayerTwoWins" >Player Two Wins</div>
+    <div class="PlayerWins" id="PlayerTwoWins" >Player Two Wins</div>
   </div>
 
   <div class = "column">
     <button class="PlayerDeck" id="PlayerDeckThree">PlayerThree</button>
     <button class="ChosenCard" id="ChosenCardPlayerThree">PlayerThreeChosenCard</button></br>
-    <div id="PlayerThreeWins">Player Three Wins</div>
+    <div class="PlayerWins" id="PlayerThreeWins">Player Three Wins</div>
   </div>
 
   <div class = "column">
     <button class="PlayerDeck" id="PlayerDeckFour">PlayerFour</button>
     <button class="ChosenCard" id="ChosenCardPlayerFour">PlayerFourChosenCard</button></br>
-    <div id="PlayerFourWins">Player Four Wins</div>
+    <div class="PlayerWins" id="PlayerFourWins">Player Four Wins</div>
   </div>
 </div>
 

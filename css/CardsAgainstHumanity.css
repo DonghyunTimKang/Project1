@@ -3,8 +3,8 @@ header, .column {
         text-align: center;
       }
       header{
-        height: 300px;
-        background-color: black;
+        height: 350px;
+        background-color: blue;
       }
       .column{
         width: 20%;
@@ -15,9 +15,12 @@ header, .column {
       #container {
         display: flex;
         justify-content: center;
-        height: 350px;
+        height: 450px;
       }
       div#container{
+        background-color: red;
+      }
+      body{
         background-color: black;
       }
       @media (max-width: 720px) and (min-width: 600px) {
@@ -32,12 +35,36 @@ header, .column {
 
       }
       .PlayerDeck{
+        margin-top: 70px;
         background-image: url("whiteCardBackground.jpg");
-        background-position: center;
+        //background-position: center;
+      }
+      .ChosenCard{
+        background-image: url("whiteCardBackground.jpg");
+      }
+      .PlayerWins {
+        color: white;
+        margin-top: 30px;
+      }
+      .PlayerOneHand{
+        background-image: url("whiteCardBackground.jpg");
+      }
+      .PlayerTwoHand{
+        background-image: url("whiteCardBackground.jpg");
+      }
+      .PlayerThreeHand{
+        background-image: url("whiteCardBackground.jpg");
+      }
+      .PlayerFourHand{
+        background-image: url("whiteCardBackground.jpg");
+      }
+      #RoundInput{
+        margin-top: 150px;
       }
       #BlackCardDeck{
+        margin-top: 35px;
         background-image: url("blackCardBlackground.jpg");
-        background-position: center;
+        //background-position: center;
         color: white;
         font-weight: bold;
 
