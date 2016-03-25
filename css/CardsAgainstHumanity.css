@@ -4,7 +4,7 @@ header, .column {
       }
       header{
         height: 350px;
-        background-color: blue;
+        background-color: black;
       }
       .column{
         width: 20%;
@@ -18,7 +18,7 @@ header, .column {
         height: 450px;
       }
       div#container{
-        background-color: red;
+        background-color: black;
       }
       body{
         background-color: black;
@@ -38,9 +38,14 @@ header, .column {
         margin-top: 70px;
         background-image: url("whiteCardBackground.jpg");
         //background-position: center;
+        color: white;
+        font-size: 110%;
       }
       .ChosenCard{
+        margin-top: 70px;
         background-image: url("whiteCardBackground.jpg");
+        color: white;
+        font-size: 110%;
       }
       .PlayerWins {
         color: white;
@@ -48,15 +53,23 @@ header, .column {
       }
       .PlayerOneHand{
         background-image: url("whiteCardBackground.jpg");
+        color: white;
+        font-size: 110%;
       }
       .PlayerTwoHand{
         background-image: url("whiteCardBackground.jpg");
+        color: white;
+        font-size: 110%;
       }
       .PlayerThreeHand{
         background-image: url("whiteCardBackground.jpg");
+        color: white;
+        font-size: 110%;
       }
       .PlayerFourHand{
         background-image: url("whiteCardBackground.jpg");
+        color: white;
+        font-size: 110%;
       }
       #RoundInput{
         margin-top: 150px;
@@ -67,6 +80,7 @@ header, .column {
         //background-position: center;
         color: white;
         font-weight: bold;
+        font-size: 110%;
 
       }
       rounds {

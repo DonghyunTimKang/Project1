@@ -569,6 +569,21 @@ chosenCardPlayerOne.addEventListener("click", function(){
       round++;
       console.log(round);
       playerOneWinDisplay.innerHTML = "Player One Wins " + oneWins;
+      if(oneWins ==5 ){
+        //switch statement and prompt
+        var game = prompt("Player One Wins! If you would like to continue, type yes. If not, type no")
+        switch(game){
+          case "no" || "No":
+          close();
+          break;
+          case "yes" || "Yes":
+          oneWins = 0;
+          twoWins = 0;
+          threeWins = 0;
+          fourWins = 0;
+          break;
+        }
+      }
       blackCardButtonStopper = 1;
     }
   })
@@ -585,6 +600,21 @@ chosenCardPlayerTwo.addEventListener("click", function(){
       round++;
       console.log(round);
       playerTwoWinDisplay.innerHTML = "Player Two Wins " + twoWins;
+      if(twoWins == 5){
+        var game = prompt("Player Two Wins! If you would like to continue, refresh the page? If not, type no")
+        switch(game){
+          case "no" || "No":
+          close();
+          break;
+          case "yes" || "Yes":
+          oneWins = 0;
+          twoWins = 0;
+          threeWins = 0;
+          fourWins = 0;
+          break;
+        }
+
+      }
       blackCardButtonStopper = 1;
     }
   })
@@ -601,6 +631,20 @@ chosenCardPlayerThree.addEventListener("click", function(){
       round++;
       console.log(round);
       playerThreeWinDisplay.innerHTML = "Player Three Wins " + threeWins;
+      if (threeWins == 5){
+        var game = prompt("Player Three Wins! If you would like to continue, refresh the page? If not, type no")
+        switch(game){
+          case "no" || "No":
+          close();
+          break;
+          case "yes" || "Yes":
+          oneWins = 0;
+          twoWins = 0;
+          threeWins = 0;
+          fourWins = 0;
+          break;
+        }
+      }
       blackCardButtonStopper = 1;
     }
   })
@@ -617,6 +661,20 @@ chosenCardPlayerFour.addEventListener("click", function(){
       round++;
       console.log(round);
       playerFourWinDisplay.innerHTML = "Player Four Wins " + fourWins;
+      if (fourWins == 5){
+        var game = prompt("Player Four Wins! If you would like to continue, refresh the page? If not, type no")
+        switch(game){
+          case "no" || "No":
+          close();
+          break;
+          case "yes" || "Yes":
+          oneWins = 0;
+          twoWins = 0;
+          threeWins = 0;
+          fourWins = 0;
+          break;
+        }
+      }
       blackCardButtonStopper = 1;
       console.log("black card blackCardButtonStopper="+blackCardButtonStopper);
     }
