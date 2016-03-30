@@ -5,7 +5,6 @@ var blackCardDeck = [
       "I got 99 problems but _ ain't one.",
       "What's a girl's best friend?",
       "What's that smell?",
-      "This is the way the world ends \/ This is the way the world ends \/ Not with a bang but with _.",
       "What is Batman's guilty pleasure?",
       "TSA guidelines now prohibit _ on airplanes.",
       "What ended my last relationship?",
